@@ -1,14 +1,3 @@
-# ASP.NET Core (.NET Framework)
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Test + Development Subscription (invoiced)(3bcf678f-f223-4209-9266-68b6fb4df7b8)'
-    appType: 'webApp'
-    appName: 'DemoAppService-hwd'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    deploymentMethod: 'auto'
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
 trigger:
 - master
@@ -39,3 +28,15 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+# ASP.NET Core (.NET Framework)
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: 'Test + Development Subscription (invoiced)(3bcf678f-f223-4209-9266-68b6fb4df7b8)'
+    appType: 'webApp'
+    appName: 'DemoAppService-hwd'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    deploymentMethod: 'auto'
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
