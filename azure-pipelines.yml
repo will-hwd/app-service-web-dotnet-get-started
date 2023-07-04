@@ -29,20 +29,13 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(build.artifactStagingDirectory)'
-    Contents: '**/*.zip'
-    TargetFolder: '$(System.DefaultWorkingDirectory)'
-
-# ASP.NET Core (.NET Framework)
-- task: AzureWebApp@1
-  inputs:
-    azureSubscription: 'Test + Development Subscription (invoiced)(3bcf678f-f223-4209-9266-68b6fb4df7b8)'
-    appType: 'webApp'
-    appName: 'DemoAppService-hwd'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    deploymentMethod: 'auto'
-# Build and test ASP.NET Core projects targeting the full .NET Framework.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+- task: AzureRmWebAppDeployment@4
+    inputs:
+      ConnectionType: 'AzureRM'
+      azureSubscription: 'Test + Development Subscription (invoiced)(3bcf678f-f223-4209-9266-68b6fb4df7b8)'
+      appType: 'webApp'
+      WebAppName: 'DemoAppService-hwd'
+      package: '$(build.artifactStagingDirectory)/WebApp.zip'
+      deploymentMethod: 'auto'
+      deploymentType: 'webDeploy'
+      enableCustomDeployment: true
