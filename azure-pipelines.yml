@@ -29,6 +29,12 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: '$(build.artifactStagingDirectory)'
+    Contents: '**/*.zip'
+    TargetFolder: '$(System.DefaultWorkingDirectory)'
+
 # ASP.NET Core (.NET Framework)
 - task: AzureWebApp@1
   inputs:
