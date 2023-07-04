@@ -30,12 +30,12 @@ steps:
     configuration: '$(buildConfiguration)'
 
 - task: AzureRmWebAppDeployment@4
-    inputs:
-      ConnectionType: 'AzureRM'
-      azureSubscription: 'Test + Development Subscription (invoiced)(3bcf678f-f223-4209-9266-68b6fb4df7b8)'
-      appType: 'webApp'
-      WebAppName: 'DemoAppService-hwd'
-      package: '$(build.artifactStagingDirectory)/WebApp.zip'
-      deploymentMethod: 'auto'
-      deploymentType: 'webDeploy'
-      enableCustomDeployment: true
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Test + Development Subscription (invoiced)(3bcf678f-f223-4209-9266-68b6fb4df7b8)'
+    appType: 'webApp'
+    WebAppName: 'DemoAppService-hwd'
+    package: '$(build.artifactStagingDirectory)/WebApp.zip'
+    deploymentMethod: 'auto'
+    deploymentType: 'webDeploy'
+    enableCustomDeployment: true
